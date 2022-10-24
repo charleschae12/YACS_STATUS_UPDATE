@@ -18,10 +18,10 @@ void get_colnume(std::ofstream& output_csv_file)
 		            <<"Cap,"
 		            <<"Act,"
 		            <<"Rem," 
-		            <<"Instructor"
-					<<"Date (MM/DD)"
-					<<"Attribute"
-					<<"Location"<< std::endl;
+		            <<"Instructor,"
+					<<"Date (MM/DD),"
+					<<"Attribute,"
+					<<"Location,"<< std::endl;
 }
 
 bool check_skip_line(std::string& buffer)
