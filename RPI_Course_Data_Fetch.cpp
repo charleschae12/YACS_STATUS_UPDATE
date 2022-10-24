@@ -32,6 +32,30 @@ bool check_skip_line(std::string& buffer)
 	return false;
 }
 
+void tokenize(std::string const& buffer, char delim,std::vector<std::string>& out)
+{
+	size_t start = 0;
+	size_t end = 0;
+
+	int cnt = 0;
+
+	while ((start = buffer.find_first_not_of(delim, end)) != std::string::npos)
+	{
+		end = buffer.find(delim, start);
+		if (cnt == 13 || cnt == 14 || cnt == 15 || cnt == 16 || cnt == 17 || cnt == 18)
+		{
+			cnt++;
+			continue;
+		}
+		out.push_back(buffer.substr(start, end - start));
+		cnt++;
+		if (out[0] == "Select")
+		{
+			out.clear();
+			return;
+		}
+	}
+}
 
 int main(int argc, char* argv[])
 {
