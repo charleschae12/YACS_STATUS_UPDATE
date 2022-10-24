@@ -17,7 +17,11 @@ void get_colnume(std::ofstream& output_csv_file)
 		            <<"Time,"
 		            <<"Cap,"
 		            <<"Act,"
-		            <<"Rem," << std::endl;
+		            <<"Rem," 
+		            <<"Instructor"
+					<<"Date (MM/DD)"
+					<<"Attribute"
+					<<"Location"<< std::endl;
 }
 
 bool check_skip_line(std::string& buffer)
