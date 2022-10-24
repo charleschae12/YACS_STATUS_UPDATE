@@ -22,7 +22,7 @@ void get_colnume(std::ofstream& output_csv_file)
 
 bool check_skip_line(std::string& buffer)
 {
-	for (int i = 0; i < buffer.size(); i++)
+	for (int i = 0; i < (int)buffer.size(); i++)
 	{
 		if (buffer[i] == ',' && buffer[i+1] == ',')
 		{
