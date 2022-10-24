@@ -57,6 +57,22 @@ void tokenize(std::string const& buffer, char delim,std::vector<std::string>& ou
 	}
 }
 
+
+void print(std::ofstream& output_csv_file,std::vector<std::string>& line_buffer)
+{
+	for (int i = 0; i < (int)line_buffer.size(); i++)
+	{
+		if (i == line_buffer.size() - 1)
+		{
+			output_csv_file << line_buffer[i] << std::endl;
+		}
+		else
+		{
+			output_csv_file << line_buffer[i] << ",";
+		}
+	}
+}
+
 int main(int argc, char* argv[])
 {
 	std::ifstream input_csv_file;
