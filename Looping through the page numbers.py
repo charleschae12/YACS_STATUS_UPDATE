@@ -1,11 +1,17 @@
 import requests
 from bs4 import BeautifulSoup as bs
  
-URL = 'https://www.geeksforgeeks.org/page/1/'
+URL = 'https://www.geeksforgeeks.org/page/'
  
-req = requests.get(URL)
-soup = bs(req.text, 'html.parser')
+for page in range(1, 10):
  
-titles = soup.find_all('div',attrs = {'class','head'})
+    req = requests.get(URL + str(page) + '/')
+    soup = bs(req.text, 'html.parser')
  
-print(titles[4].text)
+    titles = soup.find_all('div', attrs={'class', 'head'})
+ 
+    for i in range(4, 19):
+        if page > 1:
+            print(f"{(i-3)+page*15}" + titles[i].text)
+        else:
+            print(f"{i-3}" + titles[i].text)
