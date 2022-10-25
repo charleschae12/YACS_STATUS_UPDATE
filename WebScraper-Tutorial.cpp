@@ -21,3 +21,19 @@ void WebTitle::StartElement(void *voidContext,
         }
     }
 }
+
+
+//
+//  libxml end element callback function
+//
+
+void WebTitle::EndElement(void *voidContext,
+                       const xmlChar *name)
+{
+    auto *context = reinterpret_cast<Context*>(voidContext);
+
+    if(!strcasecmp( reinterpret_cast<const char *>( name ), "div") && context->addTitle )
+    {
+         context->addTitle = false;
+    }
+}
