@@ -37,3 +37,20 @@ void WebTitle::EndElement(void *voidContext,
          context->addTitle = false;
     }
 }
+
+//
+//  Text handling helper function
+//
+
+void WebTitle::handleCharacters(Context *context,
+                             const xmlChar *chars,
+                             int length)
+{
+  if(!context->dataExtracted && context->addTitle )
+  {
+    context->dataExtracted = true;
+//    cerr << "chars = " << chars << endl;
+    context->title.append((char *)chars, length);
+    //    cerr << "title = " << context->title << endl;
+  }
+}
