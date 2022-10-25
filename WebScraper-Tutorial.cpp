@@ -54,3 +54,15 @@ void WebTitle::handleCharacters(Context *context,
     //    cerr << "title = " << context->title << endl;
   }
 }
+
+//
+//  libxml PCDATA callback function
+//
+
+void WebTitle::Characters(void *voidContext,
+                       const xmlChar *chars,
+                       int length)
+{
+    auto *context = reinterpret_cast<Context*>(voidContext);
+    handleCharacters(context, chars, length);
+}
