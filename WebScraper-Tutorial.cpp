@@ -188,3 +188,40 @@ bool WebTitle::initCurl(const char *url)
     return true;
 }
 
+
+int WebTitle::writer(char *data, size_t size, size_t nmemb,
+                  std::string *writerData)
+{
+  if(writerData == nullptr)
+    return 0;
+
+  writerData->append(data, size*nmemb);
+
+  return size * nmemb;
+}
+
+void Scraper::startScraping()
+{
+    int i = 1;
+    for( auto &site: webSites)
+    {
+        std::thread([&site]() {
+            site.second.createConn(site.first);
+            site.second.parseHtml();
+        }).detach();
+    }
+}
+
+
+std::string Scraper::getHeadline(std::string &webSite)
+{
+        auto it = webSites.find(webSite);
+
+        if(it == webSites.end())
+        {
+            throw out_of_range("The website you enter is not in the list");
+        }
+
+        it->second.getContext().dataExtracted = false;
+        return it->second.getContext().title;
+}
