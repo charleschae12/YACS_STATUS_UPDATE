@@ -91,3 +91,29 @@ void WebTitle::parseHtml()
   htmlParserCtxtPtr ctxt;
   clearContext();
 }
+
+//  htmlDocPtr doc = htmlReadMemory(htmlData.c_str() , htmlData.size(), "" , nullptr,HTML_PARSE_RECOVER );
+
+//  if(!doc)
+//      return;
+
+  ctxt = htmlCreatePushParserCtxt(&saxHandler, &context, "", 0, "",
+                                  XML_CHAR_ENCODING_NONE);
+
+  htmlParseChunk(ctxt, htmlData.c_str(), static_cast<int>( htmlData.size()), 0);
+  htmlParseChunk(ctxt, "", 0, 1);
+
+  htmlFreeParserCtxt(ctxt);
+}
+
+bool WebTitle::createConn(const std::string &name)
+{
+    if(!initCurl(name.c_str()))
+        throw std::out_of_range("Can not get " + name);
+
+    code = curl_easy_perform(conn);
+    curl_easy_cleanup(conn);
+
+    if(code != CURLE_OK) {
+      throw std::out_of_range("Can not perform curl_easy_perform " );
+    }
