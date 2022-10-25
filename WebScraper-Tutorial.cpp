@@ -90,3 +90,4 @@ void WebTitle::parseHtml()
 {
   htmlParserCtxtPtr ctxt;
   clearContext();
+}
