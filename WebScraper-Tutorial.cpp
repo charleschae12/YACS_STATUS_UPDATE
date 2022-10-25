@@ -123,3 +123,22 @@ bool WebTitle::createConn(const std::string &name)
 
     return true;
 }
+
+WebTitle::WebTitle( const std::string &tag, const char *attr[])
+{
+    context.tag = tag;
+    context.attr = const_cast<char **>( attr );
+}
+
+
+Scraper::Scraper(std::unordered_map<std::string, WebTitle> & umap) : webSites(umap)
+{
+
+}
+
+
+Scraper::~Scraper()
+{
+//    for( auto& it : threadIds)
+//        it.join();
+}
