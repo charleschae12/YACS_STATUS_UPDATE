@@ -66,3 +66,27 @@ void WebTitle::Characters(void *voidContext,
     auto *context = reinterpret_cast<Context*>(voidContext);
     handleCharacters(context, chars, length);
 }
+
+//
+//  libxml CDATA callback function
+//
+
+void WebTitle::cdata(void *voidContext,
+                  const xmlChar * chars,
+                  int  length)
+{
+  auto *context = reinterpret_cast<Context*>(voidContext);
+
+  handleCharacters(context, chars, length);
+}
+
+void WebTitle::clearContext(void)
+{
+    context.addTitle = false;
+    context.dataExtracted = false;
+}
+
+void WebTitle::parseHtml()
+{
+  htmlParserCtxtPtr ctxt;
+  clearContext();
