@@ -22,7 +22,6 @@ void WebTitle::StartElement(void *voidContext,
     }
 }
 
-
 //
 //  libxml end element callback function
 //
@@ -90,7 +89,6 @@ void WebTitle::parseHtml()
 {
   htmlParserCtxtPtr ctxt;
   clearContext();
-}
 
 //  htmlDocPtr doc = htmlReadMemory(htmlData.c_str() , htmlData.size(), "" , nullptr,HTML_PARSE_RECOVER );
 
@@ -117,3 +115,11 @@ bool WebTitle::createConn(const std::string &name)
     if(code != CURLE_OK) {
       throw std::out_of_range("Can not perform curl_easy_perform " );
     }
+
+//    ofstream s;
+//    s.open("time.mk.out", ios::app);
+
+//    s << htmlData << endl;
+
+    return true;
+}
