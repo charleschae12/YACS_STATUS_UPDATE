@@ -1,8 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <body>
-...
-<script>
+    <h1>Collection of elements:</h1>
+    <input type = "text" id = "searchBar" oninput = "Search((this.value).toLowerCase())" placeholder = "Search...">
+    <br><br>
+    <ul>
+        <li class = "listItem">ABC</li>
+        <li class = "listItem">DEF</li>
+        <li class = "listItem">GHI</li>
+        <li class = "listItem">JKL</li>
+    </ul>
+    <script>
     function Search(item){
             var collection = document.getElementsByClassName("listItem");
             for (i = 0;i < collection.length; i++){
@@ -13,7 +21,6 @@
                         }
             }
     }
-</script>
-...
+    </script>
 </body>
 </html>
