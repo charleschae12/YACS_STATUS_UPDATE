@@ -7,3 +7,14 @@
      <p>No results found!</p>
   </div>
 </template>
+
+<script setup>
+import { ref } from "vue";
+let input = ref("");
+const fruits = ["apple", "banana", "orange"];
+function filteredList() {
+  return fruits.filter((fruit) =>
+    fruit.toLowerCase().includes(input.value.toLowerCase())
+  );
+}
+</script>
