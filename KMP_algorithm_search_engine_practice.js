@@ -22,3 +22,34 @@ var makeKMPTable = function(word) {
     }
     return results;
 };
+
+var KMPSearch = function(string, word) {
+    if(Object.prototype.toString.call(string) == '[object String]' ) {
+        string = string.split('');
+    }
+    if(Object.prototype.toString.call(word) == '[object String]' ) {
+        word = word.split('');
+    }
+
+    var index = -1;
+    var m = 0;
+    var i = 0;
+    var T = makeKMPTable(word);
+
+    while (m + i &lt; string.length) {
+        if (word[i] == string[m + i]) {
+            if (i == word.length - 1) {
+                return m;
+            }
+            i++;
+        } else {
+            m = m + i - T[i];
+            if (T[i] &gt; -1) {
+                i = T[i];
+            } else {
+                i = 0;
+            }
+        }
+    }
+    return index;
+};
