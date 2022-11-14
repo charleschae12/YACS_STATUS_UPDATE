@@ -16,3 +16,14 @@ function partition(arr, start, end) {
   }
   return swapIndex
 }
+
+function quickSort(arr, start = 0, end = arr.length - 1) {
+  // Base case
+  if (start >= end) return
+  let pivotIndex = partition(arr, start, end)
+  // Left
+  quickSort(arr, start, pivotIndex - 1)
+  // Right
+  quickSort(arr, pivotIndex + 1, end)
+  return arr
+}
