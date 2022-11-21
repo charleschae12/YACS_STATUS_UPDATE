@@ -60,3 +60,31 @@ export default {
     }
 }
 }
+</script>
+<style>
+@import "../node_modules/@syncfusion/ej2-vue-navigations/styles/material.css";
+
+.center-align {
+text-align: center;
+padding: 20px;
+}
+
+.title {
+text-align: center;
+font-size: 20px;
+padding: 15px;
+}
+
+.sub-title {
+text-align: center;
+font-size: 16px;
+padding: 10px;
+}
+
+.center {
+text-align: center;
+display: none;
+font-size: 13px;
+font-weight: 400;
+margin-top: 20px;
+}
