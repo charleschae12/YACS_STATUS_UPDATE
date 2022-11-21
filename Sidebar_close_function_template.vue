@@ -33,3 +33,30 @@ import { SidebarPlugin } from '@syncfusion/ej2-vue-navigations';
 import { ButtonPlugin } from '@syncfusion/ej2-vue-buttons';
 import { enableRipple } from '@syncfusion/ej2-base';
 enableRipple(true);
+
+Vue.use(SidebarPlugin);
+Vue.use(ButtonPlugin);
+export default {
+ data () {
+      return {
+        showBackdrop :false,
+    };
+ },
+ methods: {
+    openClick :function() {
+      this.$refs.sidebar.show();
+    },
+    toggleClick :function() {
+      this.$refs.sidebar.toggle();
+    },
+    closeClick: function() {
+     this.$refs.sidebar.hide();
+    },
+    close:function() {
+        console.log("sidebar closed");
+    },
+    open:function() {
+        console.log("sidebar opened");
+    }
+}
+}
