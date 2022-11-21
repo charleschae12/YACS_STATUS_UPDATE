@@ -88,3 +88,16 @@ font-size: 13px;
 font-weight: 400;
 margin-top: 20px;
 }
+
+
+#default-sidebar {
+background-color: rgb(25, 118, 210);
+color: #ffffff;
+}
+
+.close-btn:hover {
+color: rgba(0, 0, 0, .87);
+background-color: #fafafa;
+}
+
+</style>
